@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:background="@color/blue"
+        android:text="Login"
+        android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Login"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Registration"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewfname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Login"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:text="First Name"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextfname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewfname"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="16dp"
+    android:hint="first name" />
+
+    <TextView
+        android:id="@+id/textViewlname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextfname"
+        android:layout_marginLeft="30dp"
+        android:text="Last Name"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextlname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewlname"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="16dp"
+        android:hint="last name" />
+    <TextView
+        android:id="@+id/textViewemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextlname"
+        android:layout_marginLeft="30dp"
+        android:text="Email"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewemail"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="16dp"
+        android:hint="user@gmail.com" />
+    <TextView
+        android:id="@+id/textViewpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextemail"
+        android:layout_marginLeft="30dp"
+        android:text="Password"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewpassword"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textPassword"
+        android:hint="Enter your password"
+         />
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextpassword"
+        android:layout_marginLeft="30dp"
+        android:text="Address"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/textViewCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAddress"
+        android:layout_marginLeft="50dp"
+        android:text="City"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewCity"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="City"/>
+    <TextView
+        android:id="@+id/textViewStreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextCity"
+        android:layout_marginLeft="50dp"
+        android:text="Street"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextStreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewStreet"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Street"/>
+    <TextView
+        android:id="@+id/textViewPostal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextStreet"
+        android:layout_marginLeft="50dp"
+        android:text="Postal Code"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/editTextPostal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewPostal"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Postal Code"/>
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editTextPostal"
+        android:textStyle="bold"
+        android:text=""
+        android:textColor="@color/red"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Register"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/error"
+        android:background="@color/lightBlue"
+        />
+
+
+
+
+</RelativeLayout>
