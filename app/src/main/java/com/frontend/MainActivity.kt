@@ -15,17 +15,7 @@ import com.frontend.ui.theme.ResturantReccomendationFrontendTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ResturantReccomendationFrontendTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Michael")
-                }
-            }
-        }
+        setContentView(R.layout.activity_restaurant)
     }
 }
 
