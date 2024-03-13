@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ResturantReccomendationFrontend</string>
+    <string name="delete_button_description">Delete</string>
 </resources>

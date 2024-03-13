@@ -8,6 +8,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#FF4081</color>
     <color name="grey">#C2C0C0</color>
     <color name="background_grey"> #D9D9D9</color>
     <color name="uber_green">#3FC060</color>
@@ -16,4 +17,5 @@
     <color name="blue">#0000FF</color>
     <color name="lightBlue">#87CEEB</color>
     <color name="red">#FF0000</color>
+
 </resources>
