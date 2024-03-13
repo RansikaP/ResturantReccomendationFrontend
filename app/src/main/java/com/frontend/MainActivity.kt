@@ -10,15 +10,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_page)
-
-        val registerButton = findViewById<Button>(R.id.register)
-
-        registerButton.setOnClickListener {
-            // Start another activity
-            val intent = Intent(this, Register::class.java)
-            startActivity(intent)
-        }
-
+        setContentView(R.layout.activity_restaurant)
     }
 }

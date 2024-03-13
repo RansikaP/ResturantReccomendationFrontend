@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvResName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResName">
+
+        <ImageView
+            android:id="@+id/ivRes"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/round_corners"
+            android:scaleType="centerCrop"
+            android:src="@drawable/kermit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/ivLocation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/location_icon"
+        app:layout_constraintBottom_toTopOf="@+id/ivCategory"
+        app:layout_constraintEnd_toStartOf="@+id/glVertical"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
+
+    <ImageView
+        android:id="@+id/ivCategory"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="2dp"
+        android:src="@drawable/category_icon"
+        app:layout_constraintBottom_toTopOf="@+id/ivPhone"
+        app:layout_constraintEnd_toStartOf="@+id/glVertical"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/ivLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ivLocation" />
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/grey"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/glVertical"
+        app:layout_constraintTop_toTopOf="@+id/ivCategory" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/grey"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/glVertical"
+        app:layout_constraintTop_toTopOf="@+id/ivLocation" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/grey"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/glVertical"
+        app:layout_constraintTop_toTopOf="@+id/ivPhone" />
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/phone_icon"
+        app:layout_constraintEnd_toStartOf="@+id/glVertical"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/ivCategory"
+        app:layout_constraintTop_toBottomOf="@+id/ivCategory" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="58dp" />
+
+   <!-- <ImageView
+        android:id="@+id/ivUberEats"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/uber_eats"
+        app:layout_constraintEnd_toStartOf="@+id/ivDoorDash"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/glHorizontal" />
+
+    <ImageView
+        android:id="@+id/ivDoorDash"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/doordash_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivUberEats"
+        app:layout_constraintTop_toTopOf="@+id/glHorizontal" />-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="152dp" />
+
+    <Button
+        android:id="@+id/btnDoorDash"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/doordash"
+        android:text="DOORDASH"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnUberEats"
+        app:layout_constraintTop_toTopOf="@+id/glHorizontal" />
+
+    <Button
+        android:id="@+id/btnUberEats"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/uber_green"
+        android:text="Uber Eats"
+        android:textAllCaps="false"
+        android:textColor="@color/uber_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnDoorDash"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/glHorizontal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
