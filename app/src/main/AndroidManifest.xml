@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".components.Register"
             android:label="Register Activity">
         </activity>
     </application>

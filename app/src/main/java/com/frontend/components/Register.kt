@@ -1,4 +1,4 @@
-package com.frontend
+package com.frontend.components
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.frontend.MainActivity
+import com.frontend.R
 
 class Register: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
