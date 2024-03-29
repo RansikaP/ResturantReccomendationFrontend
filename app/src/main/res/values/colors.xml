@@ -17,5 +17,7 @@
     <color name="blue">#0000FF</color>
     <color name="lightBlue">#87CEEB</color>
     <color name="red">#FF0000</color>
+    <color name="colorPrimary">#3F51B5</color> <!-- Dark blue -->
+    <color name="colorPrimaryDark">#303F9F</color> <!-- Darker shade of blue -->
 
 </resources>
