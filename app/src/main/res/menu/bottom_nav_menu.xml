@@ -14,10 +14,7 @@
         android:id="@+id/navigation_restaurant"
         android:icon="@drawable/baseline_restaurant_24"
         android:title="Restaurant" />
-    <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/baseline_search_24"
-        android:title="Search" />
+
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/baseline_account_circle_24"

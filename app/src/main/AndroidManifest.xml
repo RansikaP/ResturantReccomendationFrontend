@@ -27,6 +27,8 @@
             android:name=".components.Register"
             android:label="Register Activity">
         </activity>
+        <activity
+            android:name=".components.bottom_nav" />
     </application>
 
 </manifest>
