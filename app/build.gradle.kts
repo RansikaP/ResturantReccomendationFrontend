@@ -64,6 +64,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.material3:material3")
+    implementation("com.android.volley:volley:1.2.1")
 //    implementation("androidx.compose.material3:material3-android:1.2.1")
 //    implementation("androidx.compose.material3:material3-desktop:1.2.1")
     testImplementation("junit:junit:4.13.2")

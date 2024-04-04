@@ -10,8 +10,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.android.volley.Network
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.BasicNetwork
+import com.android.volley.toolbox.DiskBasedCache
+import com.android.volley.toolbox.HurlStack
+import com.android.volley.toolbox.JsonObjectRequest
 import com.frontend.MainActivity
 import com.frontend.R
+import org.json.JSONObject
 
 class Register: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,9 +75,64 @@ class Register: ComponentActivity() {
             } else {
                 // All fields are filled
                 error.setText("")
+                registerNewUser(fname2,lname2,email2,password2,city2,street2,postal2);
             }
             val text = fname2 + "," +lname2 + "," +email2 + "," +password2 + "," +city2 + "," +street2 + "," +postal2
             Log.d("Register", "Text entered: $text")
         }
+    }
+
+    fun registerNewUser(fname:String,lname:String,email:String,password:String, city:String,street:String,postal:String){
+        // Instantiate the cache
+        val cache = DiskBasedCache(cacheDir, 1024 * 1024) // 1MB cap
+
+        // Set up the network to use HttpURLConnection as the HTTP client.
+        val network: Network = BasicNetwork(HurlStack())
+
+        // Instantiate the RequestQueue with the cache and network. Start the queue.
+        val requestQueue = RequestQueue(cache, network).apply {
+            start()
+        }
+
+        val url = "https://restaurant-tinder-backend-1c3d5e1e49c2.herokuapp.com/api/v1/auth/register"
+
+        val jsonObject = JSONObject().apply {
+            put("fname", fname)
+            put("lname", lname)
+            put("email", email)
+            put("password", password)
+            put("address", JSONObject().apply {
+                put("street", street)
+                put("city", city)
+                put("postalCode", postal)
+            })
+        }
+
+        Log.e("here","here")
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject,
+            { response ->
+                val access_token = response.getString("access_token")
+                val refresh_token = response.getString("refresh_token")
+                Log.e("VolleyResponse", access_token)
+
+                // Save access token to SharedPreferences
+                val sharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("access_token", access_token)
+                editor.putString("refresh_token", refresh_token)
+                editor.apply()
+
+
+                // Start another activity after authentication
+                val intent = Intent(this, bottom_nav::class.java)
+                startActivity(intent)
+            },
+            { error ->
+                Log.e("VolleyError", error.toString())
+            })
+
+        // Add the request to the RequestQueue.
+        requestQueue.add(jsonObjectRequest)
     }
 }
