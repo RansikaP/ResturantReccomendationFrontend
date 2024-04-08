@@ -1,7 +1,7 @@
 package com.frontend
 
+import android.content.Intent
 import android.os.Bundle
-<<<<<<< Updated upstream
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.frontend.ui.theme.ResturantReccomendationFrontendTheme
-=======
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -29,13 +28,17 @@ import com.frontend.components.Register
 import com.frontend.components.bottom_nav
 import com.frontend.components.swipe_home_page
 import org.json.JSONObject
->>>>>>> Stashed changes
+import android.widget.Button
+import androidx.activity.ComponentActivity
+import com.frontend.components.Register
+import com.frontend.components.bottom_nav
+import com.frontend.components.swipe_home_page
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("here","here")
         super.onCreate(savedInstanceState)
-<<<<<<< Updated upstream
         setContent {
             ResturantReccomendationFrontendTheme {
                 // A surface container using the 'background' color from the theme
@@ -46,7 +49,6 @@ class MainActivity : ComponentActivity() {
                     Greeting("Michael")
                 }
             }
-=======
         setContentView(R.layout.login_page)
 
         val loginButton = findViewById<Button>(R.id.login_button)
@@ -55,8 +57,15 @@ class MainActivity : ComponentActivity() {
         loginButton.setOnClickListener {
             // Start another activity
             authenticateAPI()
->>>>>>> Stashed changes
         }
+       registerButton.setOnClickListener {
+            // Start another activity
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
 
     fun authenticateAPI() {
@@ -117,20 +126,4 @@ class MainActivity : ComponentActivity() {
 
 
 
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ResturantReccomendationFrontendTheme {
-        Greeting("Android")
-    }
 }
