@@ -2,6 +2,32 @@ package com.frontend
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.frontend.ui.theme.ResturantReccomendationFrontendTheme
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import androidx.activity.ComponentActivity
+import com.android.volley.Network
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.BasicNetwork
+import com.android.volley.toolbox.DiskBasedCache
+import com.android.volley.toolbox.HurlStack
+import com.android.volley.toolbox.JsonObjectRequest
+import com.frontend.components.Register
+import com.frontend.components.bottom_nav
+import com.frontend.components.swipe_home_page
+import org.json.JSONObject
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.frontend.components.Register
@@ -11,7 +37,18 @@ import com.frontend.components.swipe_home_page
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("here","here")
         super.onCreate(savedInstanceState)
+        setContent {
+            ResturantReccomendationFrontendTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Michael")
+                }
+            }
         setContentView(R.layout.login_page)
 
         val loginButton = findViewById<Button>(R.id.login_button)
@@ -19,10 +56,8 @@ class MainActivity : ComponentActivity() {
 
         loginButton.setOnClickListener {
             // Start another activity
-            val intent = Intent(this, bottom_nav::class.java)
-            startActivity(intent)
+            authenticateAPI()
         }
-
        registerButton.setOnClickListener {
             // Start another activity
             val intent = Intent(this, Register::class.java)
@@ -32,11 +67,9 @@ class MainActivity : ComponentActivity() {
 
 
     }
-<<<<<<< Updated upstream
-=======
 
     fun authenticateAPI() {
-
+        Log.e("here1","here")
         val usernameInput = findViewById<EditText>(R.id.username_input)
         val passwordInput = findViewById<EditText>(R.id.password_input)
         val email = usernameInput.text.toString()
@@ -60,8 +93,9 @@ class MainActivity : ComponentActivity() {
             put("password", password)
         }
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, jsonObject,
-            Response.Listener { response ->
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject,
+            { response ->
                 val access_token = response.getString("access_token")
                 val refresh_token = response.getString("refresh_token")
                 Log.e("VolleyResponse", access_token)
@@ -71,14 +105,18 @@ class MainActivity : ComponentActivity() {
                 val editor = sharedPreferences.edit()
                 editor.putString("access_token", access_token)
                 editor.putString("refresh_token", refresh_token)
+                editor.putString("user_id",email)
                 editor.apply()
 
 
                 // Start another activity after authentication
-                val intent = Intent(this, bottom_nav::class.java)
-                startActivity(intent)
+                if (!access_token.isNullOrEmpty()){
+                    val intent = Intent(this, bottom_nav::class.java)
+                    startActivity(intent)
+                }
+
             },
-            Response.ErrorListener { error ->
+            { error ->
                 Log.e("VolleyError", error.toString())
             })
 
@@ -88,5 +126,4 @@ class MainActivity : ComponentActivity() {
 
 
 
->>>>>>> Stashed changes
 }
