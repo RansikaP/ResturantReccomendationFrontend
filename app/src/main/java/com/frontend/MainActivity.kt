@@ -2,11 +2,22 @@ package com.frontend
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.ComponentActivity
+import com.android.volley.Network
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.BasicNetwork
+import com.android.volley.toolbox.DiskBasedCache
+import com.android.volley.toolbox.HurlStack
+import com.android.volley.toolbox.JsonObjectRequest
 import com.frontend.components.Register
 import com.frontend.components.bottom_nav
 import com.frontend.components.swipe_home_page
+import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
 
@@ -19,8 +30,7 @@ class MainActivity : ComponentActivity() {
 
         loginButton.setOnClickListener {
             // Start another activity
-            val intent = Intent(this, bottom_nav::class.java)
-            startActivity(intent)
+            authenticateAPI()
         }
 
        registerButton.setOnClickListener {
@@ -28,14 +38,9 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
-
-
-
     }
-<<<<<<< Updated upstream
-=======
 
-    fun authenticateAPI() {
+    private fun authenticateAPI() {
 
         val usernameInput = findViewById<EditText>(R.id.username_input)
         val passwordInput = findViewById<EditText>(R.id.password_input)
@@ -60,33 +65,34 @@ class MainActivity : ComponentActivity() {
             put("password", password)
         }
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, jsonObject,
-            Response.Listener { response ->
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject,
+            { response ->
                 val access_token = response.getString("access_token")
                 val refresh_token = response.getString("refresh_token")
-                Log.e("VolleyResponse", access_token)
+                if (!access_token.isNullOrEmpty()) {
+                    Log.e("VolleyResponse", access_token)
 
-                // Save access token to SharedPreferences
-                val sharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putString("access_token", access_token)
-                editor.putString("refresh_token", refresh_token)
-                editor.apply()
+                    // Save access token to SharedPreferences
+                    val sharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("access_token", access_token)
+                    editor.putString("refresh_token", refresh_token)
+                    editor.putString("userId", email)
+                    editor.apply()
 
 
-                // Start another activity after authentication
-                val intent = Intent(this, bottom_nav::class.java)
-                startActivity(intent)
+                    // Start another activity after authentication
+
+                    val intent = Intent(this, bottom_nav::class.java)
+                    startActivity(intent)
+                }
             },
-            Response.ErrorListener { error ->
+            { error ->
                 Log.e("VolleyError", error.toString())
             })
 
         // Add the request to the RequestQueue.
         requestQueue.add(jsonObjectRequest)
     }
-
-
-
->>>>>>> Stashed changes
 }
