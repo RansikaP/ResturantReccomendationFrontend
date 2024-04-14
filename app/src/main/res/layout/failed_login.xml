@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/round_textbox"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:backgroundTint="@color/white"
+        >
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:text="Failed to Login"
+            android:textColor="#FF64B3F1"
+            android:textSize="30sp"
+            android:padding="9dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:text="Invalid email and/or password"
+            android:textColor="#FF64B3F1"
+            android:textSize="20sp"
+            android:padding="9dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="9dp"
+            android:text="OK"
+            android:backgroundTint="#FF64B3F1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:padding="18dp"
+            android:id="@+id/failed_login_button"
+
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
