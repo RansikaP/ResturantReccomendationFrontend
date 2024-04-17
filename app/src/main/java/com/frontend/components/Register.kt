@@ -121,6 +121,7 @@ class Register: ComponentActivity() {
                 val editor = sharedPreferences.edit()
                 editor.putString("access_token", access_token)
                 editor.putString("refresh_token", refresh_token)
+                editor.putString("userId", email)
                 editor.apply()
 
 
