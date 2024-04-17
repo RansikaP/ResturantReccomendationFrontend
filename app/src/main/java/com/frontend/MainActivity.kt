@@ -9,14 +9,12 @@ import androidx.activity.ComponentActivity
 import com.android.volley.Network
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
 import com.frontend.components.Register
 import com.frontend.components.bottom_nav
-import com.frontend.components.swipe_home_page
 import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
@@ -40,6 +38,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private fun startLogin() {
+        setContentView(R.layout.login_page)
+        val loginButton = findViewById<Button>(R.id.login_button)
+        loginButton.setOnClickListener {
+            authenticateAPI()
+        }
+    }
+
     private fun authenticateAPI() {
 
         val usernameInput = findViewById<EditText>(R.id.username_input)
@@ -57,6 +63,7 @@ class MainActivity : ComponentActivity() {
         val requestQueue = RequestQueue(cache, network).apply {
             start()
         }
+
 
         val url = "https://restaurant-tinder-backend-1c3d5e1e49c2.herokuapp.com/api/v1/auth/authenticate"
 
@@ -87,12 +94,25 @@ class MainActivity : ComponentActivity() {
                     val intent = Intent(this, bottom_nav::class.java)
                     startActivity(intent)
                 }
+                else {
+                    handleFailedLogin()
+                }
             },
             { error ->
                 Log.e("VolleyError", error.toString())
+                handleFailedLogin()
             })
 
         // Add the request to the RequestQueue.
         requestQueue.add(jsonObjectRequest)
+
+    }
+
+    private fun handleFailedLogin() {
+        setContentView(R.layout.failed_login)
+        val failedLoginButton = findViewById<Button>(R.id.failed_login_button)
+        failedLoginButton.setOnClickListener {
+            startLogin() // Restart the login process
+        }
     }
 }
