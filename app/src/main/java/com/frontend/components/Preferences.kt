@@ -167,42 +167,10 @@ fun Preferences(padding: PaddingValues) {
     }
 }
 
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Composable
-//fun SmallBottomAppBarExample() {
-//    Scaffold(
-//        modifier = Modifier.fillMaxSize(),
-//        bottomBar = {
-//            BottomAppBar(
-//                modifier = Modifier.height(75.dp).fillMaxWidth(),
-//                actions = {
-//                    IconButton(onClick = { /*TODO*/ }) {
-//                        Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favourite")
-//                    }
-//                    IconButton(onClick = { /*TODO*/ }) {
-//                        Icon(imageVector = Icons.Default.Menu, contentDescription = "Preferences")
-//                    }
-//                    IconButton(onClick = { /*TODO*/ }) {
-//                        Icon(imageVector = Icons.Default.Place, contentDescription = "Matches")
-//                    }
-//                    IconButton(onClick = { /*TODO*/ }) {
-//                        Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
-//                    }
-//                    IconButton(onClick = { /*TODO*/ }) {
-//                        Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "Profile")
-//                    }
-//                }
-//            )
-//        },
-//    ) { innerPadding ->
-//        com.frontend.components.Preferences(innerPadding)
-//    }
-//}
-
-//@Preview(showBackground = true )
-//@Composable
-//fun PreferencesPreview() {
-//    ResturantReccomendationFrontendTheme {
-//        SmallBottomAppBarExample()
-//    }
-//}
+@Preview(showBackground = true )
+@Composable
+fun PreferencesPreview() {
+    ResturantReccomendationFrontendTheme {
+        Preferences(padding = PaddingValues(start = 20.dp, end = 20.dp))
+    }
+}

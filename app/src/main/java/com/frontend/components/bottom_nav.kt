@@ -1,6 +1,7 @@
 package com.frontend.components
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -9,6 +10,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class bottom_nav  : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
+        val user = sharedPreferences.getString("userId", "")
+        if (user != null) {
+            Log.d("Shared Preferences Userid", user)
+        }
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bottom_nav)
