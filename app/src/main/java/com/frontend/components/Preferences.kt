@@ -12,7 +12,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
-fun preferencesAPI(context: Context,user:String,accessToken:String) {
+fun preferencesAPI(context: Context, user: String, accessToken: String, callback: () -> Unit) {
     // Instantiate the RequestQueue.
     Log.d("Preferences access token", accessToken)
     val queue = Volley.newRequestQueue(context)
@@ -24,14 +24,22 @@ fun preferencesAPI(context: Context,user:String,accessToken:String) {
         Response.Listener<String> { response ->
             // Handle the response
             Log.d("Response Pref", response)
-            Log.d("Response Pref" , JSONObject(response).getBoolean("halal").toString())
+         
             val sharedPreferences = context.getSharedPreferences("auth", ComponentActivity.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
+
+            editor.putString("distance", JSONObject(response).getInt("distance").toString())
             editor.putString("halal", JSONObject(response).getBoolean("halal").toString())
+            editor.putString("vegetarian", JSONObject(response).getBoolean("vegetarian").toString())
+            editor.putString("vegan", JSONObject(response).getBoolean("vegan").toString())
+            editor.putString("glutenFree", JSONObject(response).getBoolean("glutenFree").toString())
+            editor.apply() // Ensure changes are committed
+            callback() // Invoke the callback after preferences are updated
         },
         Response.ErrorListener { error ->
             // Handle errors
             Log.e("Error", "Error occurred", error)
+            callback() // Optionally call the callback even in case of error to handle UI changes
         }) {
         @Throws(AuthFailureError::class)
         override fun getHeaders(): Map<String, String> {
