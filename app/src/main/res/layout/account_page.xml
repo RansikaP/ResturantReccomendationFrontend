@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/icon_account"
+            />
+
+        <EditText
+            android:id="@+id/first_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:hint="First Name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/round_textbox"
+            android:padding="18dp"
+            android:text="First Name"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/last_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:hint="Last Name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/round_textbox"
+            android:padding="18dp"
+            android:text="Last Name"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:hint="Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/round_textbox"
+            android:padding="18dp"
+            android:inputType="textEmailAddress"
+            android:gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/new_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:hint="New Password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/round_textbox"
+            android:padding="18dp"
+            android:inputType="textPassword"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/update_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:text="Update Account"
+            android:backgroundTint="@color/white"
+            android:textColor="#FF64B3F1"
+            android:textSize="20sp"
+            android:padding="18dp"
+            />
+
+        <Button
+            android:id="@+id/delete_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:text="Delete Account"
+            android:backgroundTint="#FFFF0000"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:padding="18dp"
+            />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:text="Logout"
+            android:backgroundTint="@color/white"
+            android:textColor="#FF64B3F1"
+            android:textSize="20sp"
+            android:padding="18dp"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
