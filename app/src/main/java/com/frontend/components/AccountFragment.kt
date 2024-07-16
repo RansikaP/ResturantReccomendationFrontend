@@ -71,9 +71,22 @@ class AccountFragment : Fragment() {
             )
             // Update user information
             updateUserInfo(requireContext(), userId, updatedUser, accessToken) { success ->
-                // Display a toast message based on the success or failure of the update
                 if (success) {
-                    Toast.makeText(context, "Account updated successfully", Toast.LENGTH_SHORT).show()
+                    // If user information update is successful, proceed to update the password
+                    val newPassword = passwordEditText.text.toString()
+                    if (newPassword.isNotEmpty() && newPassword != "***") {
+                        changeUserPassword(requireContext(), userId, newPassword, accessToken) { passChangeSuccess ->
+                            // Display a toast message based on the success or failure of the password change
+                            if (passChangeSuccess) {
+                                Toast.makeText(context, "Account and password updated successfully", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Account updated but failed to change password", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } else {
+                        // If password is not changed, just display success message for account update
+                        Toast.makeText(context, "Account updated successfully", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(context, "Failed to update account", Toast.LENGTH_SHORT).show()
                 }
@@ -94,7 +107,7 @@ class AccountFragment : Fragment() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
 
-                    // finish the current activity
+                    // Finish the current activity
                     activity?.finish()
                 } else {
                     // Display a toast message indicating failure
@@ -115,7 +128,7 @@ class AccountFragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
 
-            // finish the current activity
+            // Finish the current activity
             activity?.finish()
         }
 

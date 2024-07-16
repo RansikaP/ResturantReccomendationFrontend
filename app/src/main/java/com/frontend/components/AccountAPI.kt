@@ -95,6 +95,49 @@ fun updateUserInfo(context: Context, userId: String, updatedUser: User, accessTo
 }
 
 /**
+ * Changes user password on the backend server.
+ *
+ * @param context The context used to create the request queue.
+ * @param userId The ID of the user whose password is being changed.
+ * @param newPassword The new password.
+ * @param accessToken The access token for authentication.
+ * @param callback The callback to handle the success or failure of the password change.
+ */
+fun changeUserPassword(context: Context, userId: String, newPassword: String, accessToken: String, callback: (Boolean) -> Unit) {
+    val queue = Volley.newRequestQueue(context)
+    val url = "https://restaurant-tinder-backend-1c3d5e1e49c2.herokuapp.com/change-pass"
+
+    // Create a JSON object with the password change request
+    val jsonObject = JSONObject().apply {
+        put("userId", userId)
+        put("newPassword", newPassword)
+    }
+
+    // Create a PATCH request to change the user password
+    val jsonObjectRequest = object : JsonObjectRequest(
+        Request.Method.PATCH, url, jsonObject,
+        { response ->
+            // Call the callback with true indicating success
+            callback(true)
+        },
+        { error ->
+            // Log an error message and call the callback with false indicating failure
+            Log.e("AccountAPI", "Error changing user password", error)
+            callback(false)
+        }) {
+        override fun getHeaders(): MutableMap<String, String> {
+            // Add the authorization header with the access token
+            val headers = HashMap<String, String>()
+            headers["Authorization"] = "Bearer $accessToken"
+            return headers
+        }
+    }
+
+    // Add the request to the request queue
+    queue.add(jsonObjectRequest)
+}
+
+/**
  * Deletes the user account on the backend server.
  *
  * @param context The context used to create the request queue.
