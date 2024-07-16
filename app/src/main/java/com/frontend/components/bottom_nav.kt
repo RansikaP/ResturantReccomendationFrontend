@@ -27,7 +27,7 @@ class bottom_nav  : AppCompatActivity(){
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_settings -> replaceFragment(PreferencesFragment())
-                R.id.navigation_account -> replaceFragment(RestaurantDetailsFragment())
+                R.id.navigation_account -> replaceFragment(AccountFragment())
                 R.id.navigation_favourites -> replaceFragment(FavouritesFragment())
                 R.id.navigation_restaurant -> replaceFragment(swipeFragment())
             }
